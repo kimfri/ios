@@ -1,0 +1,25 @@
+<configuration>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type
+             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{50} -%kvp- %msg%n</pattern>
+        </encoder>
+    </appender>
+<!--    <RollingFile name="ErrorLog" fileName="logs/app.log"-->
+<!--                 filePattern="logs/$${date:yyyy-MM}/app-%d{yyyy-MM-dd-HH}-%i.log.gz">-->
+<!--        <PatternLayout>-->
+<!--            <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>-->
+<!--        </PatternLayout>-->
+<!--        <Policies>-->
+<!--            <TimeBasedTriggeringPolicy interval="6" modulate="true"/>-->
+<!--            <SizeBasedTriggeringPolicy size="250 MB"/>-->
+<!--        </Policies>-->
+<!--    </RollingFile>-->
+
+    <root level="info">
+        <appender-ref ref="STDOUT" />
+<!--        <appender-ref ref="ErrorLog" />-->
+    </root>
+</configuration>

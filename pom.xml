@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>ios-util</module>
+        <module>ios-logging</module>
     </modules>
 
     <properties>
