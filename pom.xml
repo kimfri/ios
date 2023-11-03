@@ -9,7 +9,6 @@
     <version>1.0.0</version>
     <packaging>pom</packaging>
     <modules>
-        <module>ios-messaging</module>
         <module>ios-util</module>
     </modules>
 
