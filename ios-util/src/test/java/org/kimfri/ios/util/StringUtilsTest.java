@@ -1,5 +1,6 @@
 package org.kimfri.ios.util;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -9,8 +10,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 class StringUtilsTest {
@@ -24,7 +24,7 @@ class StringUtilsTest {
     @ParameterizedTest
     @MethodSource("possibleNullValues")
     void givenAnyArgumentIsNull_thenReturnNull(List<String> stringList, String delimiter) {
-      assertNull(StringUtils.concatenate(stringList, delimiter));
+      assertThat(StringUtils.concatenate(stringList, delimiter)).isNull();
     }
 
     @ParameterizedTest
@@ -32,7 +32,9 @@ class StringUtilsTest {
     void givenNonNullValues_CorrectValueIsReturned(List<String> stringList,
                                                    String delimiter,
                                                    String expected) {
-      assertEquals(StringUtils.concatenate(stringList, delimiter), expected);
+      assertThat(StringUtils.concatenate(stringList, delimiter))
+          .as("Returnvalue should have been: %s", expected)
+          .isEqualTo(expected);
     }
 
     private static Stream<Arguments> nonNullValues() {
